@@ -1,0 +1,26 @@
+FROM golang:1.15.0-alpine
+
+ARG storageAccountName=abc
+ENV storageAccountName=$storageAccountName
+ARG accessKey=xxxxx
+ENV accessKey=$accessKey
+ARG containerName=container
+ENV containerName=$containerName
+
+# Set the Current Working Directory inside the container
+WORKDIR $GOPATH/src/github.com/alpanachaphalkar/storage-blobs-go-quickstart
+
+# Copy everything from the current directory to the PWD (Present Working Directory) inside the container
+COPY . .
+
+# Download all the dependencies
+RUN go get -d -v ./...
+
+# Install the package
+RUN go install -v ./...
+
+# This container exposes port 8080 to the outside world
+EXPOSE 8080
+
+# Run the executable
+CMD ["storage-blobs-go-quickstart"]
