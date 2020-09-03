@@ -10,7 +10,7 @@ import (
 	"google.golang.org/api/option"
 )
 
-func getService() *storage.Client {
+func getGcpService() *storage.Client {
 	ctx := context.Background()
 
 	PrivateKeyData, bucketName := os.Getenv("PrivateKeyData"), os.Getenv("bucket_name")
