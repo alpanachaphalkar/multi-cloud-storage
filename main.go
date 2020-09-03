@@ -12,6 +12,5 @@ func main() {
 	// 	log.Fatal(err)
 	// }
 
-	gcpSvc := gcp.getService()
 	fmt.Println("GCP service connected")
 }

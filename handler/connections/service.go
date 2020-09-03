@@ -1,4 +1,4 @@
-package handler
+package connections
 
 import (
 	"context"
@@ -7,10 +7,11 @@ import (
 	"os"
 
 	"cloud.google.com/go/storage"
+	"github.com/pkg/errors"
 	"google.golang.org/api/option"
 )
 
-func getGcpService() *storage.Client {
+func getGcpService() (*storage.Client, error) {
 	ctx := context.Background()
 
 	PrivateKeyData, bucketName := os.Getenv("PrivateKeyData"), os.Getenv("bucket_name")
@@ -20,12 +21,12 @@ func getGcpService() *storage.Client {
 
 	decodedPrivateKey, err := base64.StdEncoding.DecodeString(PrivateKeyData)
 	if err != nil {
-		log.Fatal(err)
+		return nil, errors.Wrapf(err, "while decoding PrivateKeyData")
 	}
 
 	client, err := storage.NewClient(ctx, option.WithCredentialsJSON(decodedPrivateKey))
 	if err != nil {
-		log.Fatal(err)
+		return nil, errors.Wrapf(err, "while establishing gcp storage connection")
 	}
-	return client
+	return client, nil
 }
