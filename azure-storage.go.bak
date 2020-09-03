@@ -2,13 +2,13 @@ package main
 
 import (
 	//"bufio"
-	"encoding/json"
-	"net/http"
 	"context"
+	"encoding/json"
 	"fmt"
 	"io/ioutil"
 	"log"
 	"math/rand"
+	"net/http"
 	"net/url"
 	"os"
 	"strconv"
@@ -28,9 +28,10 @@ import (
 // - Azure Storage Performance and Scalability checklist https://docs.microsoft.com/azure/storage/common/storage-performance-checklist
 // - Storage Emulator - https://docs.microsoft.com/azure/storage/common/storage-use-emulator
 
+// Blobs Struct for Json response
 type Blobs struct {
-	Container   string
-	Blobs []string
+	Container string
+	Blobs     []string
 }
 
 func randomString() string {
@@ -121,7 +122,7 @@ func azureBlobOperation(w http.ResponseWriter, r *http.Request) {
 
 		w.WriteHeader(http.StatusCreated)
 		file.Close()
-		w.Write([]byte(`{"message": "file `+ fileName +` is uploaded"}`))
+		w.Write([]byte(`{"message": "file ` + fileName + ` is uploaded"}`))
 	//case "PUT":
 	//	w.WriteHeader(http.StatusAccepted)
 	//	w.Write([]byte(`{"message": "put called"}`))
@@ -130,10 +131,10 @@ func azureBlobOperation(w http.ResponseWriter, r *http.Request) {
 		fmt.Printf("Deleting the file with blob name: %s\n", reqFilename)
 		blobURL := containerURL.NewBlockBlobURL(reqFilename)
 		blobURL.Delete(ctx, "include", azblob.BlobAccessConditions{})
-	//	fmt.Printf("Cleaning up.\n")
-	//	containerURL.Delete(ctx, azblob.ContainerAccessConditions{})
+		//	fmt.Printf("Cleaning up.\n")
+		//	containerURL.Delete(ctx, azblob.ContainerAccessConditions{})
 		w.WriteHeader(http.StatusOK)
-		w.Write([]byte(`{"message": "file `+ reqFilename +` is deleted"}`))
+		w.Write([]byte(`{"message": "file ` + reqFilename + ` is deleted"}`))
 	default:
 		w.WriteHeader(http.StatusNotFound)
 		w.Write([]byte(`{"message": "not found"}`))

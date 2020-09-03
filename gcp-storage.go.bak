@@ -17,8 +17,8 @@ import (
 
 // BucketObjects Struct for Json response
 type BucketObjects struct {
-	Bucket      string
-	ObjectNames []string
+	Bucket  string
+	Objects []string
 }
 
 func storageOperation(w http.ResponseWriter, r *http.Request) {
