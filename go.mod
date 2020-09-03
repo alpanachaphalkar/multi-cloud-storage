@@ -1,4 +1,4 @@
-module github.com/Azure/storage-blobs-go-quickstart
+module github.com/alpanachaphalkar/multi-cloud-storage
 
 go 1.15
 
