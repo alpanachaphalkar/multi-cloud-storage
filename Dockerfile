@@ -6,9 +6,13 @@ ARG accessKey=xxxxx
 ENV accessKey=$accessKey
 ARG containerName=container
 ENV containerName=$containerName
+ARG bucket_name=bkt
+ENV bucket_name=$bucket_name
+ARG PrivateKeyData=xxxxxxxxxx
+ENV PrivateKeyData=$PrivateKeyData
 
 # Set the Current Working Directory inside the container
-WORKDIR $GOPATH/src/github.com/alpanachaphalkar/storage-blobs-go-quickstart
+WORKDIR $GOPATH/src/github.com/alpanachaphalkar/multi-cloud-storage
 
 # Copy everything from the current directory to the PWD (Present Working Directory) inside the container
 COPY . .
@@ -23,4 +27,4 @@ RUN go install -v ./...
 EXPOSE 8080
 
 # Run the executable
-CMD ["storage-blobs-go-quickstart"]
+CMD ["multi-cloud-storage"]
