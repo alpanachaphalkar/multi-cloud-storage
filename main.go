@@ -17,24 +17,6 @@ func main() {
 		log.Fatal(err)
 	}
 
-	// bkt, gcpCtx, err := con.GetGcpService()
-	// if err != nil {
-	// 	log.Fatal(err)
-	// }
-	// attrs, err := bkt.Attrs(gcpCtx)
-	// if err != nil {
-	// 	log.Fatal(err)
-	// }
-	// fmt.Println("GCP service connected to bucket: " + attrs.Name)
-	// gcpCtx.Done()
-
-	// containerURL, azureCtx, err := con.GetAzureService()
-	// if err != nil {
-	// 	log.Fatal(err)
-	// }
-
-	// fmt.Println("Azure service connected to container: " + containerURL.URL().Path)
-	// azureCtx.Done()
 }
 
 func storageOperation(w http.ResponseWriter, r *http.Request) {
