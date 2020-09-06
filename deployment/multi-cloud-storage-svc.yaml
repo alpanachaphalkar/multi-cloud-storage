@@ -1,0 +1,51 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: multi-cloud-storage-svc
+  labels:
+    app: multi-cloud-storage
+spec:
+  ports:
+  - name: http
+    port: 8080
+    targetPort: 8080
+  selector:
+    app: multi-cloud-storage
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: multi-cloud-storage-sa
+  labels:
+    account: multi-cloud-storage
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: multi-cloud-storage
+  labels:
+    app: multi-cloud-storage
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: multi-cloud-storage
+  template:
+    metadata:
+      labels:
+        app: multi-cloud-storage
+    spec:
+      serviceAccountName: multi-cloud-storage-sa
+      containers:
+      # replace the repository URL with your own repository (e.g. {DockerID}/http-db-service:0.0.x for Docker Hub).
+      - image: alpanachaphalkar/multi-cloud-storage:1.0
+        imagePullPolicy: IfNotPresent
+        name: multi-cloud-storage
+        ports:
+        - name: http
+          containerPort: 8080
+        resources:
+          limits:
+            memory: 500Mi
+          requests:
+            memory: 32Mi
