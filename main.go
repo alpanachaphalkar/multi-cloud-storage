@@ -6,7 +6,7 @@ import (
 	"log"
 	"net/http"
 
-	"github.com/alpanachaphalkar/multi-cloud-storage/handler"
+	"github.com/xPlorinRolyPoly/multi-cloud-storage/handler"
 )
 
 func main() {
