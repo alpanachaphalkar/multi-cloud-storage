@@ -12,7 +12,7 @@ ARG PrivateKeyData=xxxxxxxxxx
 ENV PrivateKeyData=$PrivateKeyData
 
 # Set the Current Working Directory inside the container
-WORKDIR $GOPATH/src/github.com/alpanachaphalkar/multi-cloud-storage
+WORKDIR $GOPATH/src/github.com/xPlorinRolyPoly/multi-cloud-storage
 
 # Copy everything from the current directory to the PWD (Present Working Directory) inside the container
 COPY . .
