@@ -10,7 +10,7 @@ import (
 
 	"cloud.google.com/go/storage"
 	"github.com/Azure/azure-storage-blob-go/azblob"
-	con "github.com/alpanachaphalkar/multi-cloud-storage/handler/connections"
+	con "github.com/xPlorinRolyPoly/multi-cloud-storage/handler/connections"
 	"google.golang.org/api/iterator"
 )
 
