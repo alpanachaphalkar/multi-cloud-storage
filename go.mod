@@ -1,4 +1,4 @@
-module github.com/alpanachaphalkar/multi-cloud-storage
+module github.com/xPlorinRolyPoly/multi-cloud-storage
 
 go 1.15
 
