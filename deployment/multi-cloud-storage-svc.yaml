@@ -38,7 +38,7 @@ spec:
       serviceAccountName: multi-cloud-storage-sa
       containers:
       # replace the repository URL with your own repository (e.g. {DockerID}/http-db-service:0.0.x for Docker Hub).
-      - image: alpanachaphalkar/multi-cloud-storage:1.0
+      - image: alpanachaphalkar/multi-cloud-storage:2.0
         imagePullPolicy: IfNotPresent
         name: multi-cloud-storage
         ports:
